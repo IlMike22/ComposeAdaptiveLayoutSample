@@ -38,12 +38,14 @@ import com.example.composeadaptivelayoutsample.design_system.NoteMarkTextField
 import com.example.composeadaptivelayoutsample.util.DeviceConfiguration
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    modifier: Modifier = Modifier
+) {
     var emailText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
 
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize(),
         contentWindowInsets = WindowInsets.statusBars
     ) { innerPadding ->
