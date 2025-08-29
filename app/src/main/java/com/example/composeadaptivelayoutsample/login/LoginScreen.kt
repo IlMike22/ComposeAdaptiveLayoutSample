@@ -108,7 +108,9 @@ fun LoginScreen(
                     horizontalArrangement = Arrangement.spacedBy(32.dp)
                 ) {
                     LoginHeaderSection(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
                     )
                     LoginFormSection(
                         emailText = emailText,
@@ -116,7 +118,8 @@ fun LoginScreen(
                         passwordText = passwordText,
                         onPasswordChange = { passwordText = it },
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .weight(1f)
+                            .verticalScroll(rememberScrollState())
                     )
                 }
             }
