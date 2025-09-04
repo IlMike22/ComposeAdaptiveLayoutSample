@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 
 @Composable
-fun NoteMarkLink(
+fun CustomLink(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier

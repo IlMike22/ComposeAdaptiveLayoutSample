@@ -26,7 +26,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NoteMarkTextField(
+fun CustomTextField(
     text: String,
     onValueChange: (String) -> Unit,
     label: String,

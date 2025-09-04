@@ -6,12 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.widthIn
@@ -32,9 +30,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.example.composeadaptivelayoutsample.design_system.NoteMarkButton
-import com.example.composeadaptivelayoutsample.design_system.NoteMarkLink
-import com.example.composeadaptivelayoutsample.design_system.NoteMarkTextField
+import com.example.composeadaptivelayoutsample.design_system.CustomButton
+import com.example.composeadaptivelayoutsample.design_system.CustomLink
+import com.example.composeadaptivelayoutsample.design_system.CustomTextField
 import com.example.composeadaptivelayoutsample.util.DeviceConfiguration
 
 @Composable
@@ -66,7 +64,6 @@ fun LoginScreen(
                 horizontal = 16.dp,
                 vertical = 24.dp
             )
-            .consumeWindowInsets(WindowInsets.navigationBars)
 
         val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
         val deviceConfiguration = DeviceConfiguration.fromWindowSizeClass(windowSizeClass)
@@ -74,7 +71,7 @@ fun LoginScreen(
         /**
          * Let the parent Composable (this one) get the current used window size.
          * And define here which layout to use for which size.
-         * Then align the content accordingly before you call the child Composables that should
+         * Then align the content accordingly before you call the child composables that should
          * be completely free of any size related information.
          */
 
@@ -118,7 +115,7 @@ fun LoginScreen(
                         passwordText = passwordText,
                         onPasswordChange = { passwordText = it },
                         modifier = Modifier
-                            .weight(1f)
+                            .weight(1f) // TODO weight is important. tell this.
                             .verticalScroll(rememberScrollState())
                     )
                 }
@@ -136,7 +133,7 @@ fun LoginScreen(
                 ) {
                     LoginHeaderSection(
                         modifier = Modifier
-                            .widthIn(max = 540.dp), // TODO this is important. Learn more about this.
+                            .widthIn(max = 540.dp),
                             alignment = Alignment.CenterHorizontally
                     )
                     LoginFormSection(
@@ -145,7 +142,7 @@ fun LoginScreen(
                         onEmailTextChange = {emailText = it},
                         onPasswordChange = {passwordText = it},
                         modifier = Modifier
-                            .widthIn(max = 540.dp) // TODO this is important. Learn more about this.
+                            .widthIn(max = 540.dp)
                     )
                 }
             }
@@ -192,7 +189,7 @@ fun LoginFormSection(
     Column(
         modifier = modifier
     ) {
-        NoteMarkTextField(
+        CustomTextField(
             text = emailText,
             onValueChange = onEmailTextChange,
             label = "Email",
@@ -204,7 +201,7 @@ fun LoginFormSection(
 
         Spacer(Modifier.height(16.dp))
 
-        NoteMarkTextField(
+        CustomTextField(
             text = passwordText,
             onValueChange = onPasswordChange,
             label = "Password",
@@ -216,14 +213,14 @@ fun LoginFormSection(
 
         Spacer(Modifier.height(24.dp))
 
-        NoteMarkButton(
+        CustomButton(
             text = "Login",
             onClick = {},
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(Modifier.height(16.dp))
 
-        NoteMarkLink(
+        CustomLink(
             text = "Don't have an account?",
             onClick = {},
             modifier = Modifier
