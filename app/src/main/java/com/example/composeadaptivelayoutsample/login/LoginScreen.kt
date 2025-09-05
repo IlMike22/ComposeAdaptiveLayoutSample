@@ -6,14 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -98,7 +96,6 @@ fun LoginScreen(
             DeviceConfiguration.MOBILE_LANDSCAPE -> {
                 Row(
                     modifier = rootModifier
-                        .windowInsetsPadding(WindowInsets.displayCutout)
                         .padding(
                             horizontal = 32.dp
                         ),
@@ -107,7 +104,7 @@ fun LoginScreen(
                     LoginHeaderSection(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .weight(1f)
+                            .weight(1f) // using weight modifier
                     )
                     LoginFormSection(
                         emailText = emailText,
@@ -115,7 +112,7 @@ fun LoginScreen(
                         passwordText = passwordText,
                         onPasswordChange = { passwordText = it },
                         modifier = Modifier
-                            .weight(1f) // TODO weight is important. tell this.
+                            .weight(1f) //using weight modifier
                             .verticalScroll(rememberScrollState())
                     )
                 }
@@ -180,7 +177,7 @@ fun LoginHeaderSection(
  */
 @Composable
 fun LoginFormSection(
-    emailText:String,
+    emailText: String,
     onEmailTextChange: (String) -> Unit,
     passwordText: String,
     onPasswordChange: (String) -> Unit,
